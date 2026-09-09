@@ -44,9 +44,10 @@
         android:textSize="20sp" />
 
     <Button
+        android:id="@+id/moje_aktywnosci"
         android:layout_width="290dp"
         android:layout_height="114dp"
         android:backgroundTint="#1777EB"
         android:text="MOJE AKTYWNOŚCI"
-        android:textSize="20sp"/>
+        android:textSize="20sp" />
 </LinearLayout>

@@ -20,9 +20,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         //DODANIE FUNKCJONALNOŚĆI PRZYCISKU "DODAJ AKTYWNOŚĆ"
-        val button = findViewById<Button>(R.id.dodaj_aktywnosc)
-        button.setOnClickListener {
+        val buttonDodajAktywnosc = findViewById<Button>(R.id.dodaj_aktywnosc)
+        buttonDodajAktywnosc.setOnClickListener {
             val intent = Intent(this, DodawanieAktywnosci::class.java)
+            startActivity(intent)
+        }
+
+        //DODANIE FUNKCJONALNOŚĆI PRZYCISKU "MOJE AKTYWNOŚCI"
+        val buttonMojeAktywnosci = findViewById<Button>(R.id.moje_aktywnosci)
+        buttonMojeAktywnosci.setOnClickListener {
+            val intent = Intent(this, MojeAktywnosci::class.java)
             startActivity(intent)
         }
     }

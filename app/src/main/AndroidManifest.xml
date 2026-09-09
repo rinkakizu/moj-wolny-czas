@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ekran_startowy">
         <activity
+            android:name=".MojeAktywnosci"
+            android:exported="false" />
+        <activity
             android:name=".DodawanieAktywnosci"
             android:exported="false" />
         <activity
