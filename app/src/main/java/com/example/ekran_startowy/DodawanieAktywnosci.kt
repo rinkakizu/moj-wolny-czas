@@ -1,5 +1,6 @@
 package com.example.ekran_startowy
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
@@ -16,6 +17,13 @@ class DodawanieAktywnosci : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        //OBSŁUGA PRZYCISKU "ANULUJ"
+        val buttonAnuluj = findViewById<Button>(R.id.anuluj)
+        buttonAnuluj.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 }
