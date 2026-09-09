@@ -25,7 +25,5 @@ class MojeAktywnosci : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
-
-        //Pozdrawiam cie oskar
     }
 }
