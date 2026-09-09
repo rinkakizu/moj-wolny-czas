@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="#0AA2F0"
+    android:gravity="top|center_horizontal"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="cursive"
+        android:padding="20sp"
+        android:text="Mój wolny czas"
+        android:textColor="#283CF8"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="247dp"
+        android:src="@drawable/mart" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:padding="20sp"
+        android:text='Aplikacja "Mój wolny czas" to aplikacja do zarządzania swoim wolnym czasem:D'
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+
+    <Button
+        android:layout_width="290dp"
+        android:layout_height="114dp"
+        android:backgroundTint="#1777EB"
+        android:text="DODAJ AKTYWNOŚĆ"
+        android:textSize="20sp"/>
+
+    <Button
+        android:layout_width="290dp"
+        android:layout_height="114dp"
+        android:backgroundTint="#1777EB"
+        android:text="MOJE AKTYWNOŚCI"
+        android:textSize="20sp"/>
+</LinearLayout>
