@@ -36,11 +36,12 @@
 
 
     <Button
+        android:id="@+id/dodaj_aktywnosc"
         android:layout_width="290dp"
         android:layout_height="114dp"
         android:backgroundTint="#1777EB"
         android:text="DODAJ AKTYWNOŚĆ"
-        android:textSize="20sp"/>
+        android:textSize="20sp" />
 
     <Button
         android:layout_width="290dp"
