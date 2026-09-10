@@ -10,6 +10,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import org.json.JSONArray
+import org.json.JSONObject
+import java.io.File
+import androidx.appcompat.app.AlertDialog
 
 class DodawanieAktywnosci : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,6 +49,59 @@ class DodawanieAktywnosci : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
+        }
+
+        //OBSŁUGA PRZYCISKU "ZAPISZ"
+        buttonZapisz.setOnClickListener {
+            val nazwaAktywnosci = editTextNazwa.text.toString()
+            val kategoria = spinnerKategorie.selectedItem.toString()
+            val czasAktywnosci = editTextCzas.text.toString()
+            val priorytet = spinnerPriorytety.selectedItem.toString()
+
+            val plik = File(filesDir, "aktywnosci.json")
+
+            //ODCZYTYWANIE DOTYCHCZASOWEGO PLIKU JSON JESLI ISTNIEJE
+            val tablicaJSON = if (plik.exists() && plik.readText().isNotEmpty()){
+                JSONArray(plik.readText())
+            } else {
+                //JESLI NIE ISTNIEJE TO TWORZY PUSTA TABLICE
+                JSONArray()
+            }
+
+            var maxId = 0
+            for (i in 0 until tablicaJSON.length()) {
+                val obiekt = tablicaJSON.getJSONObject(i)
+                val id = obiekt.optInt("id", 0)
+                if (id > maxId) {
+                    maxId = id
+                }
+            }
+            val noweId = maxId + 1
+
+            //NOWA AKTYWNOSC JAKO OBIEKT JSON
+            val nowaAktywnosc = JSONObject().apply {
+                put("id", noweId)
+                put("nazwa", nazwaAktywnosci)
+                put("kategoria", kategoria)
+                put("czas", czasAktywnosci)
+                put("priorytet", priorytet)
+                put("priorytet", priorytet)
+            }
+
+            //ZAPIS DO PLIKU
+            tablicaJSON.put(nowaAktywnosc)
+            plik.writeText(tablicaJSON.toString())
+
+            //POWIADOMIENIE O ZAPISANIU AKTYWNOSCI
+            AlertDialog.Builder(this)
+                .setTitle("Sukces")
+                .setMessage("Pomyślnie zapisano nową aktywność")
+                .setPositiveButton("OK") {dialog, _ ->
+                    dialog.dismiss()
+                    finish()
+                }
+                .setCancelable(false)
+                .show()
         }
     }
 }

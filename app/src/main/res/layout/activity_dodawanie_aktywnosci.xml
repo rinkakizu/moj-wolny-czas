@@ -45,7 +45,9 @@
             android:layout_marginStart="26dp"
             android:layout_marginTop="10dp"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:backgroundTint="#000000"
+            android:importantForAutofill="no" />
 
         <TextView
             android:id="@+id/textView6"
@@ -72,7 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="26dp"
             android:layout_marginTop="26dp"
-            android:text="Czas trwania"
+            android:text="Czas trwania (minuty)"
             android:textColor="#283CF8"
             android:textStyle="bold" />
 
@@ -82,8 +84,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="26dp"
             android:layout_marginTop="10dp"
+            android:backgroundTint="#000000"
             android:ems="10"
-            android:inputType="number|numberDecimal" />
+            android:importantForAutofill="no"
+            android:inputType="numberDecimal" />
 
         <TextView
             android:id="@+id/textView8"
