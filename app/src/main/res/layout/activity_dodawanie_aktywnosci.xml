@@ -108,7 +108,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="335dp"
+            android:layout_height="100dp"
             android:orientation="horizontal">
 
             <Button
@@ -129,7 +129,20 @@
                 android:layout_marginTop="40dp"
                 android:backgroundTint="#283CF8"
                 android:text="Anuluj" />
+
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/errorInfo"
+            android:layout_width="300dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="26dp"
+            android:text=""
+            android:textColor="#770000"
+            android:textSize="48px"
+            android:textStyle="bold"
+            android:visibility="invisible" />
 
         <androidx.constraintlayout.widget.Guideline
             android:layout_width="wrap_content"

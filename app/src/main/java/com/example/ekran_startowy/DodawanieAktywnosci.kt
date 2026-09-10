@@ -2,10 +2,12 @@ package com.example.ekran_startowy
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -55,53 +57,85 @@ class DodawanieAktywnosci : AppCompatActivity() {
         buttonZapisz.setOnClickListener {
             val nazwaAktywnosci = editTextNazwa.text.toString()
             val kategoria = spinnerKategorie.selectedItem.toString()
-            val czasAktywnosci = editTextCzas.text.toString()
+            val czasAktywnosci = editTextCzas.text.toString().trim().toIntOrNull()
             val priorytet = spinnerPriorytety.selectedItem.toString()
 
-            val plik = File(filesDir, "aktywnosci.json")
-
-            //ODCZYTYWANIE DOTYCHCZASOWEGO PLIKU JSON JESLI ISTNIEJE
-            val tablicaJSON = if (plik.exists() && plik.readText().isNotEmpty()){
-                JSONArray(plik.readText())
+            val errorInfoText = findViewById<TextView>(R.id.errorInfo)
+            if (nazwaAktywnosci.isEmpty() ) {
+                errorInfoText.text = "UZUPEŁNIJ NAZWĘ!"
+                errorInfoText.visibility = View.VISIBLE
+            } else if (czasAktywnosci == null) {
+                errorInfoText.text = "UZUPEŁNIJ CZAS POPRAWNIE!"
+                errorInfoText.visibility = View.VISIBLE
+            } else if (czasAktywnosci <= 0) {
+                errorInfoText.text = "CZAS MUSI BYĆ DODATNI!"
+                errorInfoText.visibility = View.VISIBLE
             } else {
-                //JESLI NIE ISTNIEJE TO TWORZY PUSTA TABLICE
-                JSONArray()
-            }
+                errorInfoText.visibility = View.INVISIBLE
 
-            var maxId = 0
-            for (i in 0 until tablicaJSON.length()) {
-                val obiekt = tablicaJSON.getJSONObject(i)
-                val id = obiekt.optInt("id", 0)
-                if (id > maxId) {
-                    maxId = id
+                //FUNKCJA DO WYKONANIA ZAPISU
+                fun wykonajZapis() {
+                    val plik = File(filesDir, "aktywnosci.json")
+
+                    //ODCZYTYWANIE DOTYCHCZASOWEGO PLIKU JSON JESLI ISTNIEJE
+                    val tablicaJSON = if (plik.exists() && plik.readText().isNotEmpty()){
+                        JSONArray(plik.readText())
+                    } else {
+                        //JESLI NIE ISTNIEJE TO TWORZY PUSTA TABLICE
+                        JSONArray()
+                    }
+
+                    var maxId = 0
+                    for (i in 0 until tablicaJSON.length()) {
+                        val obiekt = tablicaJSON.getJSONObject(i)
+                        val id = obiekt.optInt("id", 0)
+                        if (id > maxId) {
+                            maxId = id
+                        }
+                    }
+                    val noweId = maxId + 1
+
+                    //NOWA AKTYWNOSC JAKO OBIEKT JSON
+                    val nowaAktywnosc = JSONObject().apply {
+                        put("id", noweId)
+                        put("nazwa", nazwaAktywnosci)
+                        put("kategoria", kategoria)
+                        put("czas", czasAktywnosci)
+                        put("priorytet", priorytet)
+                        put("priorytet", priorytet)
+                    }
+
+                    //ZAPIS DO PLIKU
+                    tablicaJSON.put(nowaAktywnosc)
+                    plik.writeText(tablicaJSON.toString())
+
+                    //POWIADOMIENIE O ZAPISANIU AKTYWNOSCI
+                    AlertDialog.Builder(this)
+                        .setTitle("Sukces")
+                        .setMessage("Pomyślnie zapisano nową aktywność")
+                        .setPositiveButton("OK") {dialog, _ ->
+                            dialog.dismiss()
+                            finish()
+                        }
+                        .setCancelable(false)
+                        .show()
+                }
+
+                //SPRAWDZENIE CZY CZAS JEST WIEKSZY NIZ 180 MINUT
+                if (czasAktywnosci > 180){
+                    AlertDialog.Builder(this)
+                        .setTitle("Uwaga!")
+                        .setMessage("Aktywność jest długa: $czasAktywnosci min! NApewno chcesz ją zapisać?")
+                        .setPositiveButton("TAK") {dialog, _ ->
+                            wykonajZapis()
+                        }
+                        .setNegativeButton("NIE", null)
+                        .setCancelable(false)
+                        .show()
+                } else {
+                    wykonajZapis()
                 }
             }
-            val noweId = maxId + 1
-
-            //NOWA AKTYWNOSC JAKO OBIEKT JSON
-            val nowaAktywnosc = JSONObject().apply {
-                put("id", noweId)
-                put("nazwa", nazwaAktywnosci)
-                put("kategoria", kategoria)
-                put("czas", czasAktywnosci)
-                put("priorytet", priorytet)
-                put("priorytet", priorytet)
-            }
-
-            //ZAPIS DO PLIKU
-            tablicaJSON.put(nowaAktywnosc)
-            plik.writeText(tablicaJSON.toString())
-
-            //POWIADOMIENIE O ZAPISANIU AKTYWNOSCI
-            AlertDialog.Builder(this)
-                .setTitle("Sukces")
-                .setMessage("Pomyślnie zapisano nową aktywność")
-                .setPositiveButton("OK") {dialog, _ ->
-                    dialog.dismiss()
-                    finish()
-                }
-                .setCancelable(false)
-                .show()
         }
     }
 }

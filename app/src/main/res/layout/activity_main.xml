@@ -29,8 +29,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif"
+        android:gravity="center"
         android:padding="20sp"
-        android:text='Aplikacja "Mój wolny czas" to aplikacja do zarządzania swoim wolnym czasem:D'
+        android:text='Zarządzaj swoim czasem, dzięki aplikacji "Mój wolny czas"'
         android:textSize="20sp"
         android:textStyle="bold" />
 
