@@ -27,7 +27,7 @@ class DodawanieAktywnosci : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        // 1. INICJALIZACJA WIDOKÓW
+        // INICJALIZACJA WIDOKÓW
         val editTextNazwa = findViewById<EditText>(R.id.nazwa_aktywnosci)
         val editTextCzas = findViewById<EditText>(R.id.czas_trwania)
         val spinnerKategorie = findViewById<Spinner>(R.id.wybierz_kategorie)
@@ -35,7 +35,7 @@ class DodawanieAktywnosci : AppCompatActivity() {
         val buttonZapisz = findViewById<Button>(R.id.Zapisz)
         val buttonAnuluj = findViewById<Button>(R.id.anuluj)
 
-        // 2. PODPIĘCIE DATA DO SPINNERÓW
+        // PODPIĘCIE DATA DO SPINNERÓW
         //listy opcji do wyboru
         val kategorie = listOf("Sport", "Nauka", "Rozrywka", "Turystyka", "Spotkanie", "Inne")
         val priorytety = listOf("Niski", "Średni", "Wysoki")
@@ -102,7 +102,6 @@ class DodawanieAktywnosci : AppCompatActivity() {
                         put("kategoria", kategoria)
                         put("czas", czasAktywnosci)
                         put("priorytet", priorytet)
-                        put("priorytet", priorytet)
                     }
 
                     //ZAPIS DO PLIKU
@@ -125,7 +124,7 @@ class DodawanieAktywnosci : AppCompatActivity() {
                 if (czasAktywnosci > 180){
                     AlertDialog.Builder(this)
                         .setTitle("Uwaga!")
-                        .setMessage("Aktywność jest długa: $czasAktywnosci min! NApewno chcesz ją zapisać?")
+                        .setMessage("Aktywność jest długa: $czasAktywnosci min! Napewno chcesz ją zapisać?")
                         .setPositiveButton("TAK") {dialog, _ ->
                             wykonajZapis()
                         }
