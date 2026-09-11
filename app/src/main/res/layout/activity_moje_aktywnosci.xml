@@ -10,34 +10,43 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="348dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="24dp"
-        android:text="MOJE AKTYWNOŚCI"
-        android:textSize="34sp" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="26dp"
+        android:fontFamily="cursive"
+        android:text="Moje Aktywności"
+        android:textAlignment="center"
+        android:textColor="#283CF8"
+        android:textSize="40sp" />
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Filtruj po kategorii"
+        android:layout_marginStart="26dp"
+        android:layout_marginLeft="6dp"
         android:layout_marginTop="12dp"
-        android:layout_marginLeft="6dp"/>
+        android:text="Filtruj po kategorii"
+        android:textColor="#283CF8"
+        android:textStyle="bold" />
 
     <Spinner
         android:id="@+id/wyborKategorii"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:layout_marginTop="6dp"/>
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="26dp" />
 
     <ListView
         android:id="@+id/listaAktywnosci"
+        style="@android:style/Widget.DeviceDefault.ExpandableListView"
         android:layout_width="match_parent"
         android:layout_height="366dp"
-        android:layout_weight="1" />
+        android:layout_marginStart="26dp"
+        android:layout_marginEnd="26dp"
+        android:layout_weight="1"
+        android:background="#EEEEFF" />
 
     <Button
         android:id="@+id/wroc"
@@ -45,7 +54,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
         android:layout_marginTop="24dp"
-        android:text="WRÓĆ"
-        android:layout_marginBottom="24dp"/>
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="#283CF8"
+        android:text="Wróć" />
 
 </LinearLayout>
