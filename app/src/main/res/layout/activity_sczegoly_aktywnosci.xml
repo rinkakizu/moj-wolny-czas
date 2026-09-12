@@ -1,10 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SczegolyAktywnosci">
+    android:orientation="vertical"
+    android:padding="20dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SZCZEGÓŁY AKTYWNOŚCI"
+        android:textStyle="bold"
+        android:textSize="40sp"
+        android:layout_marginBottom="10dp"
+        android:textAlignment="center"
+        android:textColor="#283CF8"
+        android:fontFamily="cursive"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nazwa:"
+        android:textStyle="bold"
+        android:textColor="#283CF8"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:id="@+id/textNazwa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kategoria:"
+        android:textStyle="bold"
+        android:textColor="#283CF8"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:id="@+id/textKategoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Czas:"
+        android:textStyle="bold"
+        android:textColor="#283CF8"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:id="@+id/textCzas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Priorytet:"
+        android:textStyle="bold"
+        android:textColor="#283CF8"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:id="@+id/textPriorytet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/buttonUsun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="USUŃ"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="#283CF8"
+            android:textAlignment="center"/>
+
+        <Button
+            android:id="@+id/buttonWroc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WRÓĆ"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="#283CF8"
+            android:textAlignment="center"/>
+
+    </LinearLayout>
+
+</LinearLayout>
